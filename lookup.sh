@@ -5,7 +5,7 @@ function err(){
 }
 
 function asset(){
-	whois -h whois.radb.net "$1" | grep -oP 'members:\ +\KAS.*' | tr ',' '\n' | tr -d ' ' | while read line
+	whois -m "$1" | grep -oP 'members:\ +\KAS.*' | tr ',' '\n' | tr -d ' ' | while read line
 	do
 		echo "$(echo "$1" | sed 's/[-:]/_/g')->$(echo "$line" | sed 's/[-:]/_/g')"
 		[ -n "$(echo $2 | grep "$1")" ] && err "$1 Abort" && continue
