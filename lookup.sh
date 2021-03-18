@@ -18,7 +18,6 @@ function as(){
 	err "$1"
 }
 
-[ -z "$1" ] && echo 'Please Input Inital AS-Set' && exit 1
 
 [ -z "$(echo "$1" | grep '^AS[0-9\-]')" ] && err "Not an AS/AS-SET" && exit 1
 [ -n "$(echo "$1" | grep '^AS-.*$')" ] || [ -n "$(echo "$1" | grep '^AS[0-9]\+:.*$')" ] && err "$1 AS-SET" && asset "$1" "$2"
