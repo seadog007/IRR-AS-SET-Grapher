@@ -12,3 +12,9 @@ echo '}' >> "$tmp"
 cp "$tmp" "$1.output"
 rm "$tmp" "$tmp2"
 
+if ! command -v dot &> /dev/null
+then
+    echo "install graphviz to generate png"
+    exit
+fi
+dot -Tpng "$1.output" > "$1.png"
